@@ -9,6 +9,7 @@ import {Component} from '@angular/core';
     selector: 'main-container',
     template: `
         <div>
+            <app-bar></app-bar>
             <main class="main">
                 content will go here
             </main>
