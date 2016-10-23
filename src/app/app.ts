@@ -4,11 +4,12 @@
 
 import {Component} from '@angular/core';
 
+
 @Component({
     selector: 'app',
     template: `
         <div>
-            <h3>yo, hello world!</h3>
+            <main-container></main-container>
         </div>
     `
 })
