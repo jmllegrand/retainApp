@@ -11,7 +11,7 @@ import {Component} from '@angular/core';
         <div>
             <app-bar></app-bar>
             <main class="main">
-                content will go here
+                <note-container></note-container>
             </main>
         </div>
     `
