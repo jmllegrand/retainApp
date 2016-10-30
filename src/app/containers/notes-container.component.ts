@@ -16,19 +16,32 @@ import {Component} from '@angular/core';
      `
     ],
     template: `
-        <div class="row center-xs notes">
-          <div class="col-xs-6 creator">
-            note creator here
-          </div>
-          <div class="notes col-xs-8">
-            <div class="row between-xs">
-                <note-card [note]="note"></note-card>
-            </div>
-          </div>
+<div class="row center-xs notes">
+    <div class="col-xs-6 creator">
+        note creator here
+    </div>
+    <div class="notes col-xs-8">
+        <div class="row between-xs">
+            <note-card
+                    class="col-xs-4"
+                    *ngFor="let note of notes"
+                    [note]="note"
+                    (checked)="onNoteChecked($event)"
+                    >
+            </note-card>
         </div>
-      `
+    </div>
+</div> `
 })
 
 export class NotesContainerComponent {
-    note = {title: 'new note', value: 'note value', color: 'lightblue'};
+    notes = [
+        {title: 'note1', value: 'note value1', color: 'lightblue', status: 'todo'},
+        {title: 'note2', value: 'note value2', color: 'lightblue', status: 'todo'},
+        {title: 'note3', value: 'note value3', color: 'lightblue', status: 'todo'}
+    ];
+
+    onNoteChecked = (note) => {
+        this.notes.splice(this.notes.indexOf(note), 1);
+    }
 };

@@ -34,3 +34,8 @@
 
 ### tech subjects
 - difference directives( [ngStyle]) & component
+
+## Step 6
+- add N notes
+- use of *ngFor directive
+- use EventEmitter to transit information back to the parent directive

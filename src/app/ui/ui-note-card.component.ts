@@ -2,7 +2,7 @@
  * Created by jmlegrand on 23/10/16.
  */
 
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 
 @Component({
@@ -48,7 +48,7 @@ import {Component, Input} from '@angular/core';
           (mouseleave)="onMouseLeave()"
           (mouseenter)="onMouseEnter()">
         <div class="icon"  
-            (click)="onChecked()" 
+            (click)="onChecked(note)" 
             *ngIf="getShowIcon()">
             <i class="material-icons">check</i>
         </div>
@@ -67,12 +67,16 @@ export class UINoteCardComponent {
 
     // note = {title: 'clean up', value: 'clean room'};
     @Input() note = {};
+    @Output() checked = new EventEmitter();
     showIcon : boolean = false;
 
 
 
-    onChecked() {
+    onChecked(aNote) {
         console.log('tata');
+        aNote.status='done';
+        console.info('note', JSON.stringify(aNote));
+        this.checked.emit(this.note);
     }
 
     onMouseLeave = () => {
