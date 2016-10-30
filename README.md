@@ -39,3 +39,7 @@
 - add N notes
 - use of *ngFor directive
 - use EventEmitter to transit information back to the parent directive
+
+## Step 7
+- create form using FormsModule
+- use ngModel for 2 ways data binding
