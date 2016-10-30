@@ -11,10 +11,10 @@ import {Component} from '@angular/core';
         <div>
             <app-bar></app-bar>
             <main class="main">
-                <note-container></note-container>
+                <notes-container></notes-container>
             </main>
         </div>
     `
 })
 
-export class MainContainerComponent {}
+export class MainComponent {}

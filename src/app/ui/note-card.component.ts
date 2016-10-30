@@ -63,7 +63,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 `
 })
 
-export class UINoteCardComponent {
+export class NoteCardComponent {
 
     // note = {title: 'clean up', value: 'clean room'};
     @Input() note = {};

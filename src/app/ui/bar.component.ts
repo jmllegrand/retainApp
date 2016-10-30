@@ -23,8 +23,7 @@ import {Component} from '@angular/core';
           font-size: 24px;
           font-weight: 400;
           cursor: pointer; 
-        }
-            
+        }     
      `
     ],
     template: `
@@ -42,4 +41,4 @@ import {Component} from '@angular/core';
         `
 })
 
-export class UIBarComponent {}
+export class BarComponent {}

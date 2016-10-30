@@ -5,16 +5,16 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {App} from "./app";
-import {MainContainerComponent} from './containers/main-container.component';
-import {UIBarComponent} from "./ui/ui-bar.component";
-import {NotesContainerComponent} from "./containers/notes-container.component";
-import {UINoteCardComponent} from "./ui/ui-note-card.component";
+import {MainComponent} from './containers/main.component';
+import {BarComponent} from "./ui/bar.component";
+import {NotesComponent} from "./containers/notes.component";
+import {NoteCardComponent} from "./ui/note-card.component";
 
 
 
 @NgModule({
     imports: [BrowserModule],
-    declarations: [App, MainContainerComponent, UIBarComponent, NotesContainerComponent, UINoteCardComponent],
+    declarations: [App, MainComponent, BarComponent, NotesComponent, NoteCardComponent],
     bootstrap : [App]
 })
 
