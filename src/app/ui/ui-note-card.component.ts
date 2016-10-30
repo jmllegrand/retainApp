@@ -43,8 +43,13 @@ import {Component, Input} from '@angular/core';
         }`
     ],
     template: `
-    <div class="note-card row shadow-1">
-        <div class="icon" (click)="onChecked()">
+     <div class="note-card row shadow-1"
+         [ngStyle]="{'background-color': note.color}"
+          (mouseleave)="onMouseLeave()"
+          (mouseenter)="onMouseEnter()">
+        <div class="icon"  
+            (click)="onChecked()" 
+            *ngIf="getShowIcon()">
             <i class="material-icons">check</i>
         </div>
         <div class="col-xs-12 title">
@@ -59,11 +64,29 @@ import {Component, Input} from '@angular/core';
 })
 
 export class UINoteCardComponent {
+
     // note = {title: 'clean up', value: 'clean room'};
     @Input() note = {};
+    showIcon : boolean = false;
+
+
 
     onChecked() {
         console.log('tata');
     }
+
+    onMouseLeave = () => {
+        console.log('onMouseLeave');
+        this.setShowIcon(false);
+    };
+
+    onMouseEnter = () => {
+        console.log('onMouseEnter');
+        this.setShowIcon(true);
+    };
+
+    getShowIcon = () => this.showIcon;
+
+    setShowIcon = (value) => this.showIcon = value;
 
 }

@@ -26,3 +26,11 @@
 ### tech subjects
 - @input decorator
 - events
+
+
+## Step 5
+- dynamically changes the style of any element
+- use of *ngIf directive
+
+### tech subjects
+- difference directives( [ngStyle]) & component
