@@ -27,19 +27,23 @@ import {Component, EventEmitter, Output} from '@angular/core';
                 [(ngModel)]="note.title"
                 name = "title"
                 placeholder="Title" 
-                class="col-xs-10 title">
+                class="col-xs-10 title"
+                (focus)="onFocus($event)"
+                >
         <input type="text" 
             [(ngModel)] = "note.value"
             name = "value"
-            placeholder="Take a note ..." 
-            class="col-xs-10">
-        <div class="actions col-xs-12 row between-xs">
+            placeholder="Create a note ..." 
+            class="col-xs-10"
+            *ngIf="getInputFocus()"
+            >
+        <div class="actions col-xs-12 row between-xs"
+                 *ngIf="note.value && note.title">
             <button type="submit" class="btn-light">
                 Done
             </button>
         </div>
     </form>
-    <pre>{{note | json}}</pre>
 </div>
 
 `
@@ -47,6 +51,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 export class NoteCreator {
     @Output() saveNote = new EventEmitter();
+    inputFocus : boolean = false;
 
     note = {
         title: "",
@@ -59,16 +64,22 @@ export class NoteCreator {
             this.saveNote.emit(aNote);
             this.resetNote();
         }
-        console.log("datas", JSON.stringify(aNote));
     };
+
+    getInputFocus = () => this.inputFocus;
+
+    setInputFocus = (focus) => this.inputFocus = focus;
 
     resetNote = () => {
         this.note = {
             title: "",
             value: "",
             color: "lightblue"
-        }
+        };
+        this.setInputFocus(false);
     };
+
+    onFocus = (data) => this.setInputFocus(true);
 
 }
 
