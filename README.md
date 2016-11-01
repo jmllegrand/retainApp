@@ -43,3 +43,8 @@
 ## Step 7
 - create form using FormsModule
 - use ngModel for 2 ways data binding
+
+
+## Step 8
+- Add a note to the collection of notes based on some events
+- Using (again) EventEmitter to pass back a object to the parent component

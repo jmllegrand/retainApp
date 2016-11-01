@@ -2,7 +2,7 @@
  * Created by jmlegrand on 30/10/16.
  */
 
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
     selector: 'note-creator',
@@ -29,12 +29,12 @@ import {Component} from '@angular/core';
                 placeholder="Title" 
                 class="col-xs-10 title">
         <input type="text" 
-            [(ngModel)] = "note.content"
-            name = "content"
+            [(ngModel)] = "note.value"
+            name = "value"
             placeholder="Take a note ..." 
             class="col-xs-10">
         <div class="actions col-xs-12 row between-xs">
-            <button type="submit" class="btn-light" (click)="getNote()">
+            <button type="submit" class="btn-light" (click)="saveNote(note)">
                 Done
             </button>
         </div>
@@ -46,12 +46,19 @@ import {Component} from '@angular/core';
 })
 
 export class NoteCreator {
+    @Output() toBeSaved = new EventEmitter();
+
+
     note = {
         title: "",
-        content: ""
+        value: ""
     };
 
-    getNote = () => console.log("datas", JSON.stringify(this.note));
+    saveNote = (aNote) => {
+        aNote.color = 'lightblue';
+        this.toBeSaved.emit(aNote);
+        console.log("datas", JSON.stringify(aNote));
+    }
 
 }
 
