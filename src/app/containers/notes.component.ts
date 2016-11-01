@@ -19,7 +19,7 @@ import {Component} from '@angular/core';
     template: `
         <div class="row center-xs notes">
             <div class="col-xs-6 creator">
-                <note-creator (toBeSaved)="onToBeSaved($event)" ></note-creator>
+                <note-creator (saveNote)="onSaveNote($event)" ></note-creator>
             </div>
             <div class="notes col-xs-8">
                 <div class="row between-xs">
@@ -47,7 +47,7 @@ export class NotesComponent {
         this.notes.splice(this.notes.indexOf(note), 1);
     };
 
-    onToBeSaved = (note) => {
+    onSaveNote = (note) => {
         console.log('note passed by the note creator', note);
         this.notes.push(note);
         console.log('list of notes after the concat()', this.notes);

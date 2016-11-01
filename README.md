@@ -48,3 +48,4 @@
 ## Step 8
 - Add a note to the collection of notes based on some events
 - Using (again) EventEmitter to pass back a object to the parent component
+- use the submit on form

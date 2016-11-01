@@ -22,7 +22,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
     `
     ],
     template: `<div class="note-creator shadow-2">
-    <form class="row">
+    <form class="row" (submit)="onSaveNote(note)">
         <input type="text" 
                 [(ngModel)]="note.title"
                 name = "title"
@@ -34,7 +34,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
             placeholder="Take a note ..." 
             class="col-xs-10">
         <div class="actions col-xs-12 row between-xs">
-            <button type="submit" class="btn-light" (click)="saveNote(note)">
+            <button type="submit" class="btn-light">
                 Done
             </button>
         </div>
@@ -46,19 +46,29 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 
 export class NoteCreator {
-    @Output() toBeSaved = new EventEmitter();
-
+    @Output() saveNote = new EventEmitter();
 
     note = {
         title: "",
-        value: ""
+        value: "",
+        color: "lightblue"
     };
 
-    saveNote = (aNote) => {
-        aNote.color = 'lightblue';
-        this.toBeSaved.emit(aNote);
+    onSaveNote = (aNote) => {
+        if (aNote.title && aNote.value) {
+            this.saveNote.emit(aNote);
+            this.resetNote();
+        }
         console.log("datas", JSON.stringify(aNote));
-    }
+    };
+
+    resetNote = () => {
+        this.note = {
+            title: "",
+            value: "",
+            color: "lightblue"
+        }
+    };
 
 }
 
