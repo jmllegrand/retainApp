@@ -11,12 +11,15 @@ import {BarComponent} from "./ui/bar.component";
 import {NotesComponent} from "./containers/notes.component";
 import {NoteCardComponent} from "./ui/note-card.component";
 import {NoteCreator} from "./ui/note-creator";
+import {ColorPicker} from "./ui/color-picker";
 
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule],
-    declarations: [App, MainComponent, BarComponent, NotesComponent, NoteCardComponent, NoteCreator],
+    declarations: [
+        App, MainComponent, BarComponent, NotesComponent, NoteCardComponent, NoteCreator, ColorPicker
+    ],
     bootstrap : [App]
 })
 

@@ -44,6 +44,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
             </button>
         </div>
     </form>
+    <color-picker></color-picker>
 </div>
 
 `
