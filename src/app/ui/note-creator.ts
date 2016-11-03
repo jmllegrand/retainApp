@@ -39,12 +39,15 @@ import {Component, EventEmitter, Output} from '@angular/core';
             >
         <div class="actions col-xs-12 row between-xs"
                  *ngIf="note.value && note.title">
+                 
+            <div class="col-xs-3">
+                <color-picker [colors]="colors" (chooseColor)="onChoosenColor($event)"></color-picker>
+            </div>     
             <button type="submit" class="btn-light">
                 Done
             </button>
         </div>
     </form>
-    <color-picker></color-picker>
 </div>
 
 `
@@ -53,6 +56,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class NoteCreator {
     @Output() saveNote = new EventEmitter();
     inputFocus : boolean = false;
+    colors: Array<string> = ['#b19cd9', '#ff9691', '#77dd77', '#aec6cf', '#f49ac2', 'white'];
 
     note = {
         title: "",
@@ -81,6 +85,10 @@ export class NoteCreator {
     };
 
     onFocus = (data) => this.setInputFocus(true);
+
+    onChoosenColor = (data) => {
+        this.note.color = data;
+    }
 
 }
 

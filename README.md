@@ -52,3 +52,8 @@
 
 ## Step 9
 - use the focus event to condition the div visibility
+
+
+## Step 9.5
+- display an array of color for the newly created color-picker
+- using @Output & EventEmitter to pass the info (color of the note selected) back to the note-creator

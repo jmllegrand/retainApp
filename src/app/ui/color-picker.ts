@@ -1,12 +1,59 @@
 /**
  * Created by jmlegrand on 02/11/16.
  */
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output, Input} from '@angular/core';
 
 
 @Component({
     selector: 'color-picker',
-    template: `<h3>Color picker</h3>`
+    styles : [`
+    .color-selector {
+      position: relative;
+    }
+    .selector {
+      min-width: 120px;
+      border: 1px solid lightgrey;
+      padding: 10px;
+      background-color: #efefef;
+      position: absolute;
+      top: -50px;
+      left: 0;
+    }
+    .color {
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .color:hover {
+      border: 2px solid darkgrey;
+    }
+    .icon {
+      font-size: 1.4rem;
+      color: grey;
+      cursor: pointer;
+    }
+	`],
+    template: `<div class="color-selector">
+      <i class="material-icons icon">color_lens</i>
+      <div class="selector row center-xs">
+        <div class="color" 
+             *ngFor="let color of colors"  
+             (click)="onChooseColor(color)"></div>
+      </div>
+    </div>
+    `
 })
 
-export class ColorPicker{};
+export class ColorPicker {
+    @Input() colors : Array<string> = [];
+    @Output() chooseColor = new EventEmitter();
+
+    onChooseColor = (color) => {
+        this.chooseColor.emit(color);
+    }
+
+
+}
