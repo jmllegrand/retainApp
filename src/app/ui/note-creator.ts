@@ -22,7 +22,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
     `
     ],
     template: `<div class="note-creator shadow-2">
-    <form class="row" (submit)="onSaveNote(note)">
+    <form class="row" (submit)="onSaveNote(note)" [ngStyle]="{'background-color': note.color}">
         <input type="text" 
                 [(ngModel)]="note.title"
                 name = "title"
@@ -41,7 +41,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
                  *ngIf="note.value && note.title">
                  
             <div class="col-xs-3">
-                <color-picker [colors]="colors" (chooseColor)="onChoosenColor($event)"></color-picker>
+                <color-picker [colors]="colors" (selectedColor)="onSelected($event)"></color-picker>
             </div>     
             <button type="submit" class="btn-light">
                 Done
@@ -86,8 +86,8 @@ export class NoteCreator {
 
     onFocus = (data) => this.setInputFocus(true);
 
-    onChoosenColor = (data) => {
-        this.note.color = data;
+    onSelected = (color) => {
+        this.note.color = color;
     }
 
 }
